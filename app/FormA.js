@@ -1,34 +1,35 @@
 'use client';
-import { useState } from 'react';
-
-function FormA({ onSubmit, age }) {
-  const [dcShows, setDcShows] = useState('');
+import { useState, useEffect } from 'react';
+function FormB({ onSubmit, age }) {
+  const [marvelShows, setMarvelShows] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit({
-      type: 'Form A',
+      type: 'Form B',
       age: age,
-      dcShows: dcShows,
-      marvelShows: null,
+      dcShows: null,
+      marvelShows: marvelShows,
     });
   };
 
   const handleChange = (event) => {
-    setDcShows(event.target.value);
+    setMarvelShows(event.target.value);
   };
 
   return (
-    <form id='dc' onSubmit={handleSubmit}>
-      <h2>Form A</h2>
+    <form id='marvel' onSubmit={handleSubmit}>
+      <h2>Form B</h2>
       <label>
-        Select DC Shows:
-        <select value={dcShows} onChange={handleChange}>
+        Select Marvel Shows:
+        <select value={marvelShows} onChange={handleChange}>
           <option value=''>--Select--</option>
-          <option value='The Flash'>The Flash</option>
-          <option value='Arrow'>Arrow</option>
-          <option value='Supergirl'>Supergirl</option>
-          <option value='Legends of Tomorrow'>Legends of Tomorrow</option>
+          <option value='WandaVision'>WandaVision</option>
+          <option value='The Falcon and the Winter Soldier'>
+            The Falcon and the Winter Soldier
+          </option>
+          <option value='Loki'>Loki</option>
+          <option value='What If...?'>What If...?</option>
         </select>
       </label>
       <br />
@@ -37,10 +38,10 @@ function FormA({ onSubmit, age }) {
         <input type='number' value={age} disabled />
       </label>
       <br />
-      <button id='submit-dc' type='submit'>
+      <button id='submit-marvel' type='submit'>
         Submit
       </button>
     </form>
   );
 }
-export default FormA;
+export default FormB;
